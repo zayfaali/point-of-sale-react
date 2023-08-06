@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useState, createContext } from "react";
 import { AdminContext } from "./admin.context";
 
-const host = "http://localhost:5000";
+const host = "https://62hcd7-5000.csb.app/";
 
 export const StoreContext = createContext({
   stores: [],

@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const host = "http://localhost:5000";
+const host = "https://62hcd7-5000.csb.app";
 
 export const AdminContext = createContext({
   setCurrentAdmin: () => null,
