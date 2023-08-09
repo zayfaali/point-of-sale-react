@@ -2,8 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import AddStore from "../AddStore/AddStore";
-
+import AddItem from "../AddItem/AddItem";
 const style = {
   position: "absolute",
   top: "50%",
@@ -15,15 +14,15 @@ const style = {
   boxShadow: 24,
   p: 10,
 };
-const AddStoreModal = () => {
+const AddItemModal = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <>
       <Button variant="contained" onClick={handleOpen}>
-        Add Store
+        Add Item
       </Button>
       <Modal
         open={open}
@@ -32,11 +31,11 @@ const AddStoreModal = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <AddStore />
+          <AddItem />
         </Box>
       </Modal>
-    </div>
+    </>
   );
 };
 
-export default AddStoreModal;
+export default AddItemModal;

@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState, useEffect, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -14,19 +13,20 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddStoreModal from "../AddStoreModal/AddStoreModal";
 import { StoreContext } from "../../context/stores.context";
-import { Outlet, Link } from "react-router-dom";
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+import { Link } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
 const StoresPreview = () => {
-  const { getStores, stores } = useContext(StoreContext);
+  const { getStores, stores, setCurrentStoreDetails, currentStore} =
+    useContext(StoreContext);
 
   useEffect(() => {
     getStores();
   }, []);
-  console.log("the stores array is ", stores);
+
+
+
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
@@ -58,9 +58,6 @@ const StoresPreview = () => {
                 justifyContent="center"
               >
                 <AddStoreModal />
-                <Link to="/stores/123">
-                  <Button variant="outlined">Secondary action</Button>
-                </Link>
               </Stack>
             </Container>
           </Box>
@@ -74,23 +71,36 @@ const StoresPreview = () => {
                       height: "100%",
                       display: "flex",
                       flexDirection: "column",
+                      transition: "transform 0.2s ease",
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                      },
                     }}
                     variant="outlined"
                   >
-                    <CardMedia
-                      component="div"
-                      sx={{
-                        // 16:9
-                        pt: "56.25%",
+                    <Link
+                      to={`/stores/${store._id}`}
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                        cursor: "pointer",
                       }}
-                      image={`${store.storePic}`}
-                    />
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {store.storeName}
-                      </Typography>
-                      <Typography>{store.storeDesc}</Typography>
-                    </CardContent>
+                    >
+                      <CardMedia
+                        component="div"
+                        sx={{
+                          // 16:9
+                          pt: "56.25%",
+                        }}
+                        image={`${store.storePic}`}
+                      />
+                      <CardContent sx={{ flexGrow: 1 }}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {store.storeName}
+                        </Typography>
+                        <Typography>{store.storeDesc}</Typography>
+                      </CardContent>
+                    </Link>
                     <CardActions>
                       <Button size="small">View</Button>
                       <Button size="small">Edit</Button>

@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavbarWithDrawer/NavBar";
 import HomePage from "./components/Home/Home";
 import AdminSignIn from "./components/AdminSignIn/AdminSignIn";
-import StoresPage from "./pages/StoresPage/StoresPage";
+import StoreRouting from "./pages/StoreRouting/StoreRouting";
+import ItemsPage from "./pages/StoreRouting/ItemsPage";
 
 const App = () => {
   return (
@@ -11,8 +12,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<HomePage />} />
-          <Route path="stores/*" element={<StoresPage />} />
+          <Route path="stores/*" element={<StoreRouting />} />
           <Route path="signin" element={<AdminSignIn />} />
+          <Route path="items" element={<ItemsPage />} />
         </Route>
       </Routes>
     </>

@@ -201,6 +201,21 @@ export default function Navbar() {
               </Link>
             </List>
           )}
+          <Divider />
+          {currentAdmin && (
+            <List>
+              <Link to="/items">
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="All Items" />
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+            </List>
+          )}
         </Drawer>
       </Box>
       <Outlet />
