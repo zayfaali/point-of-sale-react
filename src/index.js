@@ -1,10 +1,11 @@
 import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { AdminProvider } from "./context/admin.context";
 import { StoreProvider } from "./context/stores.context";
 import { ItemProvider } from "./context/items.context";
-import ReactDOM from "react-dom/client";
-import App from "./App";
+import { CartProvider } from "./context/cart.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +14,9 @@ root.render(
       <AdminProvider>
         <StoreProvider>
           <ItemProvider>
-            <App />
+            <CartProvider>
+              <App />
+            </CartProvider>
           </ItemProvider>
         </StoreProvider>
       </AdminProvider>

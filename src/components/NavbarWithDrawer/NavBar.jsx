@@ -22,6 +22,7 @@ import Menu from "@mui/material/Menu";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import { AdminContext } from "../../context/admin.context";
+import CartBadge from "../CartBadge/CartBadge";
 
 const drawerWidth = 240;
 
@@ -147,6 +148,7 @@ export default function Navbar() {
                 >
                   <MenuItem onClick={handleClose}>Logout</MenuItem>
                 </Menu>
+                <CartBadge />
               </div>
             )}
           </Toolbar>

@@ -18,11 +18,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { ItemContext } from "../../context/items.context";
 import { StoreContext } from "../../context/stores.context";
+import { CartContext } from "../../context/cart.context";
 
 const defaultTheme = createTheme();
 
 const DisplayItems = () => {
   const { getItems, items } = useContext(ItemContext);
+  const { addItemToCart } = useContext(CartContext);
 
   const {
     setCurrentStore,
@@ -128,9 +130,10 @@ const DisplayItems = () => {
                         {item.itemDesc}
                       </Typography>
                     </CardContent>
-                    <CardActions>
-                      <Button size="small">View</Button>
-                      <Button size="small">Edit</Button>
+                    <CardActions sx={{ justifyContent: "center" }}>
+                      <Button onClick={() => addItemToCart(item)}>
+                        Add To Cart
+                      </Button>
                     </CardActions>
                   </Card>
                 </Grid>

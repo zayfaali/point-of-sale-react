@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ItemContext } from "../../context/items.context";
+import { CartContext } from "../../context/cart.context";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import CameraIcon from "@mui/icons-material/PhotoCamera";
@@ -26,6 +27,7 @@ const defaultTheme = createTheme();
 
 const ItemsPage = () => {
   const { getAllItems, allItems } = useContext(ItemContext);
+  const { addItemToCart } = useContext(CartContext);
 
   useEffect(() => {
     getAllItems();
@@ -143,9 +145,10 @@ const ItemsPage = () => {
                         {item.itemDesc}
                       </Typography>
                     </CardContent>
-                    <CardActions>
-                      <Button size="small">View</Button>
-                      <Button size="small">Edit</Button>
+                    <CardActions sx={{ justifyContent: "center" }}>
+                      <Button onClick={() => addItemToCart(item)}>
+                        Add To Cart
+                      </Button>
                     </CardActions>
                   </Card>
                 </Grid>

@@ -18,14 +18,12 @@ import { Link } from "react-router-dom";
 const defaultTheme = createTheme();
 
 const StoresPreview = () => {
-  const { getStores, stores, setCurrentStoreDetails, currentStore} =
+  const { getStores, stores, setCurrentStoreDetails, currentStore } =
     useContext(StoreContext);
 
   useEffect(() => {
     getStores();
   }, []);
-
-
 
   return (
     <>
@@ -101,7 +99,11 @@ const StoresPreview = () => {
                         <Typography>{store.storeDesc}</Typography>
                       </CardContent>
                     </Link>
-                    <CardActions>
+                    <CardActions
+                      sx={{
+                        alignItems: "flex-end",
+                      }}
+                    >
                       <Button size="small">View</Button>
                       <Button size="small">Edit</Button>
                     </CardActions>
