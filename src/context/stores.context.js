@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useState, createContext } from "react";
 import { AdminContext } from "./admin.context";
 
-const host = "http://localhost:5000";
+const host = process.env.REACT_APP_API_HOST;
 
 export const StoreContext = createContext({
   stores: [],
@@ -75,6 +75,26 @@ export const StoreProvider = ({ children }) => {
     setCurrentStoreDetails(storeDetails);
   };
 
+  // UPDATE STORE
+  const editStore = async (
+    storeId,
+    storeName,
+    storeDesc,
+    storePic,
+    storeLocation
+  ) => {
+    // API Call
+    const apiUrl = `${host}/api/stores/update-store/${storeId}`;
+    const response = await fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ storeName, storeDesc, storePic, storeLocation }),
+    });
+    const updatedStore = await response.json();
+    console.log(updatedStore);
+  };
   const value = {
     stores,
     setStores,
@@ -85,6 +105,7 @@ export const StoreProvider = ({ children }) => {
     addStore,
     getStores,
     getCurrentStoreDetails,
+    editStore,
   };
 
   return (

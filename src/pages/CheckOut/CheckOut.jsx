@@ -6,11 +6,14 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import CheckOutTable from "../../components/CheckOutTable/CheckOutTable";
 import { CartContext } from "../../context/cart.context";
+import PaymentForm from "../../components/PaymentForm/PaymentForm";
 
 const defaultTheme = createTheme();
 
 const CheckOut = () => {
-  const { cartTotal } = useContext(CartContext);
+  const { cartTotal, cartItems } = useContext(CartContext);
+  console.log("the cart items are ", cartItems);
+
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
@@ -45,6 +48,7 @@ const CheckOut = () => {
             {`CartTotal : ${cartTotal}`}
           </Typography>
         </Box>
+        <PaymentForm cartItems={cartItems} cartTotal={cartTotal} />
       </ThemeProvider>
     </>
   );

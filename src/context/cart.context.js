@@ -87,6 +87,10 @@ export const CartProvider = ({ children }) => {
   const clearItemFromCart = (cartItemToClear) => {
     setCartItems(clearCartItem(cartItems, cartItemToClear));
   };
+
+  const emptyCart = () => {
+    setCartItems([]);
+  };
   const value = {
     isCartOpen,
     setIsCartOpen,
@@ -98,6 +102,7 @@ export const CartProvider = ({ children }) => {
     clearItemFromCart,
     cartTotal,
     setCartTotal,
+    emptyCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

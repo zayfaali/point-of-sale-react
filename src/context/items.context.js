@@ -1,7 +1,7 @@
 import { createContext, useState, useContext } from "react";
 import { StoreContext } from "./stores.context";
 
-const host = "http://localhost:5000";
+const host = process.env.REACT_APP_API_HOST;
 
 export const ItemContext = createContext({
   items: [],

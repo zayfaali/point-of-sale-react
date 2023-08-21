@@ -34,7 +34,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const CheckOutTable = () => {
   const { cartItems, addItemToCart, removeItemFromCart, clearItemFromCart } =
     useContext(CartContext);
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">

@@ -31,7 +31,7 @@ const AdminSignIn = () => {
       password: data.get("password"),
     };
     console.log(formFields);
-    await loginAdmin(formFields);
+   loginAdmin(formFields);
     event.target.reset();
   };
 

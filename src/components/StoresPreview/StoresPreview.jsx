@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -14,12 +13,12 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddStoreModal from "../AddStoreModal/AddStoreModal";
 import { StoreContext } from "../../context/stores.context";
 import { Link } from "react-router-dom";
+import EditStoreModal from "../EditStoreModal/EditStoreModal";
 
 const defaultTheme = createTheme();
 
 const StoresPreview = () => {
-  const { getStores, stores, setCurrentStoreDetails, currentStore } =
-    useContext(StoreContext);
+  const { getStores, stores } = useContext(StoreContext);
 
   useEffect(() => {
     getStores();
@@ -102,10 +101,10 @@ const StoresPreview = () => {
                     <CardActions
                       sx={{
                         alignItems: "flex-end",
+                        justifyContent: "center",
                       }}
                     >
-                      <Button size="small">View</Button>
-                      <Button size="small">Edit</Button>
+                      <EditStoreModal storeId={store._id} />
                     </CardActions>
                   </Card>
                 </Grid>

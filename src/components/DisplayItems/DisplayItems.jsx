@@ -129,6 +129,9 @@ const DisplayItems = () => {
                       <Typography align="center" variant="h6">
                         {item.itemDesc}
                       </Typography>
+                      <Typography align="center" variant="h6">
+                        inStock : {item.inStock}
+                      </Typography>
                     </CardContent>
                     <CardActions sx={{ justifyContent: "center" }}>
                       <Button onClick={() => addItemToCart(item)}>

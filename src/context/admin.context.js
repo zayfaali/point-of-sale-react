@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const host = "http://localhost:5000";
+const host = process.env.REACT_APP_API_HOST;
 
 export const AdminContext = createContext({
   setCurrentAdmin: () => null,
@@ -14,7 +14,7 @@ export const AdminProvider = ({ children }) => {
 
   const loginAdmin = async (loginData) => {
     const apiUrl = `${host}/api/adminauth/loginadmin`;
-
+    console.log("host", host);
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -28,7 +28,7 @@ export const AdminProvider = ({ children }) => {
       console.log(json);
       setCurrentAdmin(json.authtoken);
       if (json.authtoken) {
-        navigate("/stores");
+        navigate("/dashboard");
       }
     } catch (error) {
       console.error("Error submitting form:", error.message);

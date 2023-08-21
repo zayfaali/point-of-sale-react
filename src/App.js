@@ -6,6 +6,9 @@ import AdminSignIn from "./components/AdminSignIn/AdminSignIn";
 import StoreRouting from "./pages/StoreRouting/StoreRouting";
 import ItemsPage from "./pages/ItemsPage/ItemsPage";
 import CheckOut from "./pages/CheckOut/CheckOut";
+import CheckoutSuccess from "./components/CheckoutSuccess/CheckoutSuccess";
+import CheckoutFailed from "./components/CheckoutFailed/CheckoutFailed";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 const App = () => {
   return (
@@ -17,6 +20,9 @@ const App = () => {
           <Route path="signin" element={<AdminSignIn />} />
           <Route path="items" element={<ItemsPage />} />
           <Route path="checkout" element={<CheckOut />} />
+          <Route path="checkout-success" element={<CheckoutSuccess />} />
+          <Route path="checkout-failed" element={<CheckoutFailed />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </>
