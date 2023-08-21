@@ -13,12 +13,12 @@ const PaymentForm = ({ cartItems, cartTotal }) => {
   const elements = useElements();
   const [isLoading, setIsLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState(null);
-
+  const host = process.env.REACT_APP_API_HOST;
   useEffect(() => {
     async function createPaymentIntent() {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/payments/create-payment-intent",
+          `${host}/api/payments/create-payment-intent`,
           {
             method: "POST",
             headers: {
